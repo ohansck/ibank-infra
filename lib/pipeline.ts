@@ -3,7 +3,7 @@ import { Construct } from 'constructs';
 import { CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines';
 
 //Create the class
-export class IBankPipelineStack extends cdk.Stack {
+export class PipelineStack extends cdk.Stack {
     constructor(scope: Construct, id: string, props?: cdk.StackProps) {
         super(scope, id, props);
 
@@ -11,7 +11,7 @@ export class IBankPipelineStack extends cdk.Stack {
         const pipeline = new CodePipeline(this, 'Pipeline', {
             pipelineName: 'IBankPipeline',
             synth: new ShellStep('Synth', {
-                input: CodePipelineSource.gitHub('michael-k-harris/cdk-pipeline-webinar', 'main'),
+                input: CodePipelineSource.gitHub('ohansck/ibank-infra.git', 'main'),
                 commands: ['npm ci', 'npm run build', 'npm run cdk synth']
             })
         });

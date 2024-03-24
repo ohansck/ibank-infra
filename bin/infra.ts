@@ -5,6 +5,7 @@ import { InfraStack } from '../lib/infra-stack';
 import { NetworkStack } from '../lib/network';
 import { SecurityStack } from '../lib/security';
 import { ComputeStack } from '../lib/compute';
+import { PipelineStack } from '../lib/pipeline';
 
 const app = new cdk.App();
 
@@ -17,6 +18,7 @@ const sg = new SecurityStack(app, 'IBankSecurityStack', {
   vpc: netStack.vpc
 })
 
+new PipelineStack(app, 'IBankPipelineStack', {});
 // new ComputeStack(app, 'IBankComputeStack', {
 
 //   vpc: netStack.vpc,
