@@ -28,13 +28,11 @@ export class InfraStack extends cdk.Stack {
 
     const bal_bucket = new s3.Bucket(this, 'BalanceS3', {
       versioned: true,
-      bucketName: 'balance-bucket-2148-2024',
       autoDeleteObjects: true,
       removalPolicy: cdk.RemovalPolicy.DESTROY
     })
 
     const demoLambda = new NodejsFunction(this, 'demoLambda', {
-      functionName: 'ibank-balance-2148-2024',
       runtime: lambda.Runtime.NODEJS_18_X,
       handler: 'handler',
       entry: path.join(__dirname, '../service/ibank.ts'),
@@ -47,7 +45,6 @@ export class InfraStack extends cdk.Stack {
 
     const gateway = new apigw.LambdaRestApi(this, 'gateway', {
       handler: demoLambda,
-      restApiName: 'ibank-balance-2148-2024',
       deploy: true,
       proxy: false
     });
