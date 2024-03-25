@@ -17,7 +17,7 @@ export class InfraStack extends cdk.Stack {
       value: 'udemy'
     }
 
-    //IAM Role
+    //IAM Role for stack
     const ibank_role = new iam.Role(this, 'ibank_iam', {
       description: 'IAM role for lambda to access s3 bucket',
       assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com'),
