@@ -11,8 +11,8 @@ export class PipelineStack extends cdk.Stack {
         const pipeline = new CodePipeline(this, 'Pipeline', {
             pipelineName: 'IBankPipeline',
             synth: new ShellStep('Synth', {
-                input: CodePipelineSource.gitHub('ohansck/ibank-infra.git', 'main'),
-                commands: ['npm ci', 'npm run build', 'npm run cdk synth']
+                input: CodePipelineSource.gitHub('ohansck/ibank-infra', 'main'),
+                commands: ['npm ci', 'npm run build', 'npx cdk synth']
             })
         });
     }
